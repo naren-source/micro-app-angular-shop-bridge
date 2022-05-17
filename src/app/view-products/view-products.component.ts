@@ -37,12 +37,17 @@ export class ViewProductsComponent implements OnInit {
     this.dataService.productsUpdated.subscribe(updatedProducts => {
       this.listOfProducts = updatedProducts;
       this.pagination(this.currentPage);
+    },error=>{
+      alert('Something went wrong!');
     })
 
     this.dataService.getProducts().subscribe(
       (productList) => {
         this.listOfProducts = productList;
         this.pagination(this.currentPage);
+      },
+      error=>{
+        alert('Something went wrong!');
       }
     );
 

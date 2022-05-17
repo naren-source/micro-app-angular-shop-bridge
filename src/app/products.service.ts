@@ -1,6 +1,6 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { map, Subject, tap } from "rxjs";
+import { catchError, map, Subject, tap, throwError } from "rxjs";
 import { ProductModel } from "./productmodel";
 
 @Injectable({ providedIn: 'root' })
@@ -22,7 +22,13 @@ export class ProductService {
         this.http.put<ProductModel[]>(
             `${this.baseApiUrl}/products-store.json`,
             this.productList
-        ).subscribe(data => {
+        )
+        .pipe(
+            catchError(error=>{
+                return throwError(error);
+            })
+        )
+        .subscribe(data => {
             this.getProducts().subscribe(updatedProducts => {
                 this.productsUpdated.next(this.productList);
             });
@@ -42,7 +48,10 @@ export class ProductService {
                         }                    
                     }                                        
                     return this.productList;
-                }),                
+                }),   
+                catchError(error=>{
+                    return throwError(error);
+                })             
             );
     }
 
@@ -57,7 +66,13 @@ export class ProductService {
         this.http.patch<ProductModel>(
             `https://shopbridge-mockapi-default-rtdb.firebaseio.com/products-store/${index}.json`,
             product
-        ).subscribe(data=>{
+        )
+        .pipe(
+            catchError(error=>{
+                return throwError(error);
+            })
+        )
+        .subscribe(data=>{
             this.getProducts().subscribe(updatedProducts => {
                 this.productsUpdated.next(this.productList);
             });       
