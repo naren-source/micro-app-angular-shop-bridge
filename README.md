@@ -4,6 +4,7 @@
 ShopBridge is an e-commerce application. As a part of this app, you need to build a website that helps track the different items they have for sale.
 
 So, as part of this app - I have only developed with respect to 'product admin'.
+### Demo video - https://photos.app.goo.gl/DdDuiSV2MPdk75Au9
 
 ## Basic Introduction: 
 To set a theme for this application, I have used a particular category of items - Books!
