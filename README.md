@@ -13,7 +13,7 @@ In this application, the product admin would be able to manage the products - Ad
 I have used Firebase realtime database as a mock-api for storing and retrieving products.
 
 ## Technology used:
-Front-End - Angular
+Front-End - Angular,
 BackEnd(MockApi) - Firebase
 
 ## Application contents:
