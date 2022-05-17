@@ -1,0 +1,23 @@
+.my-form{
+    margin: 2rem;
+}
+
+.form-title{
+    color: lightseagreen;
+    position: relative;
+    left: 18%
+}
+
+.help-block{
+    color: rgb(216, 27, 27);
+    font-size: small;
+}
+
+input.ng-invalid.ng-touched{
+    border: 1px solid rgb(216, 27, 27);;
+}
+
+.submit-form-button[disabled]{
+    cursor: not-allowed;
+}
+  

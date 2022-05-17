@@ -1,0 +1,38 @@
+.page-title-display{
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 2rem;
+    position: relative;
+    left: 30%;
+}
+
+.page-subtitle-display{ 
+    font-size: 1rem;
+    position: relative;
+    left: -5%;
+}
+
+.product-item{
+    background-color: rgba(243, 243, 243, 0.76);
+    border-radius: .75rem;
+    margin: 1rem;
+    padding: 0.5rem;
+    cursor: pointer;
+}
+
+.product-desc{
+    font-style: italic;
+}
+
+.product-rupees{
+    font-weight: 500;
+}
+
+.modify-buttons{
+    margin: 0.5rem;
+    float: right;
+}
+
+.new-button{
+    position: relative;
+    left: 10%;
+}

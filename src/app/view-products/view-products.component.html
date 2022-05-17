@@ -1,0 +1,73 @@
+<div class="container">
+    <div class="page-title-display">
+        <div class="" *ngIf="!enableModifyButtons && !openNew && !openEnlargedView">
+            <div>LIST OF AVAILABLE PRODUCTS</div>
+            <div class="text-muted page-subtitle-display">You can just view the items here! Plese click on each item for
+                an enlarged view</div>
+        </div>
+        <div class="" *ngIf="enableModifyButtons && !openNew && !openEnlargedView">
+            <div>MODIFY YOUR PRODUCTS</div>
+            <div class="text-muted page-subtitle-display">You can modify the items here! Plese click on the relevant buttons to edit/delete</div>
+            <span class="new-button">
+                <button class="btn btn-info btn-sm" id="openFormIdNew" (click)="openForm(null)">Add new product</button>
+            </span>
+        </div>
+        <div class="" *ngIf="openNew">
+            <div>ADD YOUR PRODUCT</div>
+            <div class="text-muted page-subtitle-display">You can add new items here. After saving, new items will be added to inventory</div>
+        </div>
+        <div class="mt-2" *ngIf="openEnlargedView">            
+            <div class="text-muted page-subtitle-display d-inline">You can view the product in a detailed view below. click <a class="link" (click)="backToViewMode()" style="cursor:pointer;">here</a> for list view.</div>
+        </div>
+
+    </div>
+    <div class="row" *ngIf="!openNew && !openEnlargedView">
+        <div class="col">
+            <div class="row product-item" *ngFor="let product of paginatedList" (click)="enlargeItem(product);">
+                <div class="col-3">
+                    <img [src]="product.image" alt="" class="card-img" style="height: 15rem; width: 10rem;">
+                </div>
+                <div class="col">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            {{product.name}}
+                            <span class="modify-buttons" *ngIf="enableModifyButtons">
+                                <button class="btn btn-sm btn-warning m-1" id="openFormIdEdit" (click)="openForm(product)">Edit</button>
+                                <button class="btn btn-sm btn-danger m-1" (click)="deleteAnItem(product.id)">Delete</button>
+                            </span>
+                        </h5>
+                        <h6 class="card-subtitle text-muted mb-2">{{product.cateory}}</h6>
+                        <p class="card-text product-desc">{{product.desc}}</p>
+                        <p class="card-subtitle product-rupees">Price: {{product.price | currency:"INR":"symbol"}}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="">
+                <ul class="pagination">
+                  <li class="page-item" >
+                      <button class="page-link" (click)="changePage(-1)" [disabled]="currentPage==1? true: false">
+                          <span>&laquo;</span>
+                      </button>
+                  </li>
+                  <li class="page-item">
+                      <a class="page-link">{{currentPage}}</a>
+                  </li>
+                  <li class="page-item">
+                      <button class="page-link" (click)="changePage(1)" [disabled]="entriesInCurrentPage<entriesPerPage? true: false">
+                          <span>&raquo;</span>            
+                      </button>
+                  </li>
+              </ul>
+              </div>
+        </div>
+        <div class="col-5" *ngIf="openEdit"> 
+            <app-add-or-update-products [item]="editThisproduct" (closeForm)="closeTheForm($event)"></app-add-or-update-products>            
+        </div>           
+    </div>
+    <div class="container" *ngIf="openNew">
+        <app-add-or-update-products (closeForm)="closeTheForm($event)"></app-add-or-update-products>            
+    </div>
+    <div class="container" *ngIf="openEnlargedView"> 
+        <app-view-enlarged [item]="itemToBeEnlarged"></app-view-enlarged>
+    </div> 
+</div>

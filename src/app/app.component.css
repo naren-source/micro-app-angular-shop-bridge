@@ -1,0 +1,12 @@
+.shop-brand{
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: lightseagreen;
+    font-weight: bold
+}
+
+.navbar-welcome-text{
+    font-weight: bold;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: lightseagreen;
+    margin: 1rem;
+}
